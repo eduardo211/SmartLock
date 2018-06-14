@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block extra_head_scripts %}
+    <script>
+        $(document).ready(function() {
+            updateBotaoGravacao('{{ estado_fechadura }}');
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="main-body-div" class="container-fluid window_full_height">
+        <div class="d-flex flex-row align-items-center height_100">
+            <div class="d-flex flex-column align-items-center width_100">
+                <h1>{{ f.nome }}</h1>
+                <button type="button" id="enroll-lock-button" class="btn btn-primary"></button>
+                <div class="d-none" id="enroll-lock-log" role="alert"></div>
+                <audio id="audio-element" class="d-none" controls></audio>
+            </div>
+        </div>
+    </div>
+    <form id="upload-form" class="d-none" action="{% url 'url_ajax_enroll' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="main-body-div" class="container-fluid window_full_height">
+        <div class="d-flex flex-row align-items-center height_100">
+            <div class="d-flex flex-column align-items-center width_100">
+                <h1>Fechaduras Disponíveis</h1>
+                <ul>
+                    {% for f in fechaduras %}
+                        <li>
+                            <a href="{% url 'fechadura' %}?f_id={{ f.id }}">{{ f.nome }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
